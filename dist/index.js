@@ -32,7 +32,6 @@ const swaggerDocument = __importStar(require("../swagger.json"));
 const app = (0, express_1.default)();
 const port = 3000;
 const routes_1 = __importDefault(require("./models/items/routes"));
-// const customerRoutes = require("./models/items/routes");
 app.use(express_1.default.json());
 app.use("/", routes_1.default);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

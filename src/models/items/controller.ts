@@ -6,7 +6,7 @@ const GetAllItems = async (req: Request, res: Response) => {
 
     const items: Array<Item> = await FindItems();
 
-    if (!items) return res.status(200).json({message: "You dont have any item inserted", status: 200});
+    if (!items) return res.status(204).json({message: "You dont have any item inserted", status: 204});
 
     return res.status(200).json(items);
 }
@@ -14,7 +14,7 @@ const GetAllItems = async (req: Request, res: Response) => {
 const GetItemById = async (req: Request, res: Response) => {
     const id = Number(req.params.id);
 
-    if (!id) return res.status(404).json({message: "An unexpected error was occurred", status: 404});
+    if (!id) return res.status(400).json({message: "An unexpected error was occurred", status: 400});
 
     const item: Item = await FindItemById(id);
 
@@ -43,7 +43,7 @@ const AddItem = async (req: Request, res: Response) => {
 const DeleteItem = async (req: Request, res: Response) => {
     const id = Number(req.params.id);
 
-    if (!id) return res.status(404).json({message: "An unexpected error was occurred", status: 404});
+    if (!id) return res.status(400).json({message: "An unexpected error was occurred", status: 400});
 
     const item: Item = await FindItemById(id);
 
@@ -51,7 +51,7 @@ const DeleteItem = async (req: Request, res: Response) => {
 
     const excludedItem: Item = await DeleteItemById(id);
 
-    if (!excludedItem) return res.status(404).json({message: "An unexpected error was occurred", status: 404});
+    if (!excludedItem) return res.status(400).json({message: "An unexpected error was occurred", status: 400});
 
     return res.status(200).json({message: `Item ${excludedItem.id} was excluded with success`, status: 200})
 }
@@ -60,7 +60,7 @@ const UpdateItem = async (req:Request, res: Response) => {
     const id = Number(req.params.id);
 
 
-    if (!id) return res.status(404).json({message: "An unexpected error was occurred", status: 404});
+    if (!id) return res.status(400).json({message: "An unexpected error was occurred", status: 400});
 
     const body: Item = {
         id: id,
@@ -72,11 +72,11 @@ const UpdateItem = async (req:Request, res: Response) => {
 
     const item: Item = await FindItemById(id);
 
-    if (!item) return res.status(200).json({message: "That Item not exist", status: 200});
+    if (!item) return res.status(204).json({message: "That Item not exist", status: 204});
 
     const updatedItem = await UpdateItemById(body);
 
-    if (!updatedItem) return res.status(404).json({message: "An unexpected error was occurred", status: 404});
+    if (!updatedItem) return res.status(400).json({message: "An unexpected error was occurred", status: 400});
 
     return res.status(200).json({message: `Item ${item.id} was updated with success`, status: 200, data: updatedItem});
 }

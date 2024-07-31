@@ -26,6 +26,9 @@
                 "$ref": "#/definitions/Item"
               }
             }
+          },
+          "204": {
+            "description": "You dont have any item inserted."
           }
         }
       }
@@ -34,7 +37,7 @@
       "get": {
         "tags": ["items"],
         "summary": "Get item by ID",
-        "description": "Returns a single item",
+        "description": "Returns a single item.",
         "operationId": "GetItemById",
         "produces": ["application/json"],
         "parameters": [
@@ -52,8 +55,11 @@
               "$ref": "#/definitions/Item"
             }
           },
-          "404": {
-            "description": "Item not found"
+          "400": {
+            "description": "An unexpected error was occurred."
+          },
+          "204": {
+            "description": "That item not exists."
           }
         }
       },
@@ -71,11 +77,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "400": {
+            "description": "An unexpected error was occurred."
           },
-          "404": {
-            "description": "Item not found"
+          "200": {
+            "description": "Item 1 was excluded with success."
           }
         }
       },
@@ -110,10 +116,10 @@
             }
           },
           "400": {
-            "description": "Invalid input"
+            "description": "An error was ocurred."
           },
-          "404": {
-            "description": "Item not found"
+          "204": {
+            "description": "Item not found."
           }
         }
       }
@@ -144,7 +150,7 @@
             }
           },
           "400": {
-            "description": "Invalid input"
+            "description": "An error was occurred."
           }
         }
       }
@@ -155,10 +161,6 @@
       "type": "object",
       "required": ["name", "description"],
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "12345"
-        },
         "name": {
           "type": "string",
           "example": "Sample Item"
@@ -166,6 +168,14 @@
         "description": {
           "type": "string",
           "example": "This is a sample item."
+        },
+        "quantity": {
+          "type": "number",
+          "example": "1"
+        },
+        "type": {
+          "type": "string",
+          "example": "This is a simple item"
         }
       }
     }
