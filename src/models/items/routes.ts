@@ -4,7 +4,6 @@ import {zodValidator} from "../../middlewares/zodValidator";
 import {ItemSchema} from "../../schema/User";
 const router = Router();
 
-
 router.get('/items', GetAllItems);
 
 router.get('/item/:id', GetItemById)
