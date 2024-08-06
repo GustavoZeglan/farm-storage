@@ -13,8 +13,8 @@ Este é um backend básico desenvolvido em Node.js com TypeScript que permite o 
 ### 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/farmsoftware-backend.git
-cd farmsoftware-backend
+git clone https://github.com/GustavoZeglan/farm-storage.git
+cd farm-storage
 
 ```
 
